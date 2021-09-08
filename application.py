@@ -14,11 +14,11 @@ def add_to_list(book):
         c = conn.cursor()
 
         # Keep the initial status as Not Started
-        c.execute('insert into items(item, status) values(?,?)', (item, NOTSTARTED))
+        c.execute('insert into items(book, finished) values(?,?)', (book, NOTSTARTED))
 
         # We commit to save the change
         conn.commit()
-        return {"item": item, "status": NOTSTARTED}
+        return {"book": item, "finished": NOTSTARTED}
     except Exception as e:
         print('Error: ', e)
         return None
