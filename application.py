@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_PATH = './todo.db'   # Update this path accordingly
+DB_PATH = './custom.db'   # Update this path accordingly
 NOTSTARTED = 'Not Started'
 INPROGRESS = 'In Progress'
 COMPLETED = 'Completed'
@@ -27,9 +27,9 @@ def get_all_items():
     try:
         conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
-        c.execute('select * from items')
+        c.execute('select * from custom')
         rows = c.fetchall()
-        return { "count": len(rows), "items": rows }
+        return { "count": len(rows), "custom": rows }
     except Exception as e:
         print('Error: ', e)
         return None
@@ -38,7 +38,7 @@ def get_item(book):
     try:
         conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
-        c.execute("select status from items where item='%s'" % book)
+        c.execute("select status from custom where item='%s'" % book)
         status = c.fetchone()[0]
         return status
     except Exception as e:
