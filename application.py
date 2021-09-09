@@ -1,79 +1,48 @@
+from flask import Flask, request, Response
+from flask import render_template
 import sqlite3
+import random
 
-DB_PATH = './custom.db'   # Update this path accordingly
-NOTSTARTED = 'Not Started'
-INPROGRESS = 'In Progress'
-COMPLETED = 'Completed'
+application = app = Flask(__name__)
 
-def add_to_list(book):
-    try:
-        conn = sqlite3.connect(DB_PATH)
+@app.route("/", methods=["POST", "Get"])
+def home():
+    return render_template("front.html")
 
-        # Once a connection has been established, we use the cursor
-        # object to execute queries
-        c = conn.cursor()
-
-        # Keep the initial status as Not Started
-        c.execute('insert into items(book, finished) values(?,?)', (book, NOTSTARTED))
-
-        # We commit to save the change
-        conn.commit()
-        return {"book": item, "finished": NOTSTARTED}
-    except Exception as e:
-        print('Error: ', e)
-        return None
-
-def get_all_items():
-    try:
-        conn = sqlite3.connect(DB_PATH)
-        c = conn.cursor()
-        c.execute('select * from custom')
-        rows = c.fetchall()
-        return { "count": len(rows), "custom": rows }
-    except Exception as e:
-        print('Error: ', e)
-        return None
-
-def get_item(book):
-    try:
-        conn = sqlite3.connect(DB_PATH)
-        c = conn.cursor()
-        c.execute("select status from custom where item='%s'" % book)
-        status = c.fetchone()[0]
-        return status
-    except Exception as e:
-        print('Error: ', e)
-        return None
-        
-def update_status(book, finished):
-    # Check if the passed status is a valid value
-    if (finished.lower().strip() == 'not started'):
-        finished = NOTSTARTED
-    elif (finished.lower().strip() == 'in progress'):
-        finished = INPROGRESS
-    elif (finished.lower().strip() == 'completed'):
-        finished = COMPLETED
+@app.route("/result", methods=["POST", "GET"])
+def sub_budget():
+    Choice = random.randint(0, 2)
+    Options = ['Rock', 'Paper', 'Scissor']
+    Computer = "Computer chose: " + Options[Choice]
+    global CompChoice
+    global WinLoseTie
+    global Player
+    CompChoice = Options[Choice]
+    if request.form.get('action') == '1':
+        Player = "Rock" 
+        if CompChoice == "Paper":
+            WinLoseTie = "You Lose!"
+        elif CompChoice == "Scissor":
+            WinLoseTie = "You Win!"
+        else:
+            WinLoseTie = "You tied!"
+    elif request.form.get('action') == '2':
+        Player = "Paper" 
+        if CompChoice == "Scissor":
+            WinLoseTie = "You Lose!"
+        elif CompChoice == "Rock":
+            WinLoseTie = "You Win!"
+        else:
+            WinLoseTie = "You tied!"
     else:
-        print("Invalid Status: " + finished)
-        return None
+        Player = "Scissor" 
+        if CompChoice == "Paper":
+            WinLoseTie = "You Win!"
+        elif CompChoice == "Scissor":
+            WinLoseTie = "You Tied!"
+        else:
+            WinLoseTie = "You Lose!"
 
-    try:
-        conn = sqlite3.connect(DB_PATH)
-        c = conn.cursor()
-        c.execute('update items set status=? where item=?', (finished, book))
-        conn.commit()
-        return {book: finished}
-    except Exception as e:
-        print('Error: ', e)
-        return None
+    return render_template("front.html", choice = Computer, WinLoseTie = WinLoseTie)
 
-def delete_item(book):
-    try:
-        conn = sqlite3.connect(DB_PATH)
-        c = conn.cursor()
-        c.execute('delete from items where item=?', (book,))
-        conn.commit()
-        return {'book': book}
-    except Exception as e:
-        print('Error: ', e)
-        return None
+app.run()
