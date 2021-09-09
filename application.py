@@ -5,11 +5,11 @@ import random
 
 application = app = Flask(__name__)
 
-@application.route("/", methods=["POST", "Get"])
+@app.route("/", methods=["POST", "Get"])
 def home():
     return render_template("front.html")
 
-@application.route("/result", methods=["POST", "GET"])
+@app.route("/result", methods=["POST", "GET"])
 def sub_budget():
     Choice = random.randint(0, 2)
     Options = ['Rock', 'Paper', 'Scissor']
@@ -44,5 +44,3 @@ def sub_budget():
             WinLoseTie = "You Lose!"
 
     return render_template("front.html", choice = Computer, WinLoseTie = WinLoseTie)
-
-app.run()
