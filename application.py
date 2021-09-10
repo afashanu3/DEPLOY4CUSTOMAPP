@@ -14,9 +14,7 @@ def sub_budget():
     Choice = random.randint(0, 2)
     Options = ['Rock', 'Paper', 'Scissor']
     Computer = "Computer chose: " + Options[Choice]
-    global CompChoice
-    global WinLoseTie
-    global Player
+    
     CompChoice = Options[Choice]
     if request.form.get('action') == '1':
         Player = "Rock" 
