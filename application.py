@@ -12,31 +12,33 @@ def home():
 @application.route("/result", methods=["POST", "GET"])
 def sub_budget():
     Choice = random.randint(0, 2)
-    Options = ['Rock', 'Paper', 'Scissor']
+    Options = ['Michael Jordan', 'LeBron James', 'Kevin Durant']
     Computer = "Computer chose: " + Options[Choice]
-    
+    global CompChoice
+    global WinLoseTie
+    global Player
     CompChoice = Options[Choice]
     if request.form.get('action') == '1':
-        Player = "Rock" 
-        if CompChoice == "Paper":
+        Player = "LeBron James" 
+        if CompChoice == "Michael Jordan":
             WinLoseTie = "You Lose!"
-        elif CompChoice == "Scissor":
+        elif CompChoice == "Kevin Durant":
             WinLoseTie = "You Win!"
         else:
             WinLoseTie = "You tied!"
     elif request.form.get('action') == '2':
-        Player = "Paper" 
-        if CompChoice == "Scissor":
+        Player = "Michael Jordan" 
+        if CompChoice == "Kevin Durant":
             WinLoseTie = "You Lose!"
-        elif CompChoice == "Rock":
+        elif CompChoice == "LeBron James":
             WinLoseTie = "You Win!"
         else:
             WinLoseTie = "You tied!"
     else:
-        Player = "Scissor" 
-        if CompChoice == "Paper":
+        Player = "Kevin Durant" 
+        if CompChoice == "Michael Jordan":
             WinLoseTie = "You Win!"
-        elif CompChoice == "Scissor":
+        elif CompChoice == "Kevin Durant":
             WinLoseTie = "You Tied!"
         else:
             WinLoseTie = "You Lose!"
