@@ -66,5 +66,6 @@ as well as requirement.py to requirements.py
 I chose to do this application because it was a great debate. Everyday in terms of twitter,barbershops,parks,households this conversation comes up. I am a big fan of all 3 players. Basketball is a topic that creates great debate and is very polarizing and I wanted to create something that added to that discussion. In terms of python a great way to practice if statements.
 
 
+Unfortunatly I was unable to deploy this app.
 
 
