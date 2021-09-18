@@ -4,7 +4,7 @@
 * [Aws](#Aws)
 * [Terminal](#Terminal)
 * [Jenkins](#Jenkins)
-* [Setup](#setup)
+* [HTML](#HTML)
 
 
 #### Aws
@@ -50,7 +50,7 @@ under the root object a . was included
 Under the version label format the build version was add next to python-01${BUILD_ID}
 
 
-
+#### HTML
 In the application file it was important to set application = app = Flask(__name__) 
 to ensure that Jenkins doesnt disrupt the application.
 
