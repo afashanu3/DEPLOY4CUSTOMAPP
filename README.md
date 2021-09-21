@@ -4,12 +4,12 @@
 * [Aws](#Aws)
 * [Terminal](#Terminal)
 * [Jenkins](#Jenkins)
-* [HTML](#HTML)
+* [Frontend](#HTML)
 
 
 #### Aws
 Created an Elastic Beanstalk to see the application that will be later created by me and named it customapp.
-Created an Amazon Linux EC2 instance called Jenkinss after I finished setting it up in terms of the attributes I used the given public ipv4
+Created an Amazon Linux EC2 instance called Jenkinss after I finished setting it up in terms of the attributes and different specifications (storage, security group, tag, etc) I used the given public ipv4
 within my terminal.
 
 #### Terminal
