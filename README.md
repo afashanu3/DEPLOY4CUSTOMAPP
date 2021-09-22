@@ -91,6 +91,6 @@ as well as requirement.py to requirements.py
 I chose to do this application because it was a great debate. Everyday in terms of twitter,barbershops,parks,households this conversation comes up. I am a big fan of all 3 players. Basketball is a topic that creates great debate and is very polarizing and I wanted to create something that added to that discussion. In terms of python a great way to practice if statements.
 
 
-Unfortunately I was unable to deploy this app.
+Unfortunately, I was unable to deploy this app. Until, I removed app.run() at the end of my code , removing this line of code allowed my environment to be shown in the environment of my elastic beanstalk. The reason it didnt work was app.run when its goes through jenkins causes an error when its being read in jenkins which causes it not to apart in the elastic beanstalk.
 
 
