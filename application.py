@@ -45,4 +45,4 @@ def sub_budget():
 
     return render_template("front.html", choice = Computer, WinLoseTie = WinLoseTie)
 
-app.run()
+
