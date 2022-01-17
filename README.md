@@ -1,16 +1,15 @@
 # DEPLOY4CUSTOMAPP
 
 ### Table of Contents
-* [Aws](#Aws)
-* [Terminal](#Terminal)
-* [Jenkins](#Jenkins)
-* [Frontend](#HTML)
+* Aws
+* Terminal
+* Jenkins
+* Frontend
 
 
 #### Aws
-Created an Elastic Beanstalk to see the application that will be later created by me and named it customapp.
-Created an Amazon Linux EC2 instance called Jenkinss after I finished setting it up in terms of the attributes and different specifications (storage, security group, tag, etc) I used the given public ipv4
-within my terminal.
+First I set up the environment for Elastic Beanstalk to deploy the application called "Choose your Player".
+Created an Amazon Linux EC2 instance called Jenkinss. After I finished setting it up in terms of the attributes and different specifications (storage, security group, tag, etc) I used the given public ip within my terminal along with my ssh key to ssh into instance.
 
 #### Terminal
 Using my terminal I input these following commands:
@@ -45,28 +44,20 @@ Added 2 plugins before starting
 
 Created a freestyle project
 Then within my freestyle project and under source management selected git added my github url containing the custom app respository 
-Next I added my elastic beanstalk infomation and 
-under the root object a . was included
-Under the version label format the build version was add next to python-01${BUILD_ID}
+Next I added my elastic beanstalk infomation and under the root object a . was included as well.
+Following that the version label format was added to the build version as python-01${BUILD_ID}
 
 
-#### HTML
-In the application file it was important to set application = app = Flask(__name__) 
-to ensure that Jenkins doesnt disrupt the application.
+#### Front-end
+In the application file it was important to set application = app = Flask(__name__) to ensure that Jenkins doesnt disrupt the application.
+ 
+Then the function render_template was used to call the information in the front.html file.
 
-The next command was used to the get and return information from the frontend
+In order for the code to be deployed without any errors application.run was called within the app.py file. 
 
-The commands following were set in order create variable 
+The layout.css file was utilized to set the background.
 
-Then several if statements, elif statements, and else statements were set to confirm your chooses and based on your chooses and thhe automated chose of the computer basically you will win or lose or tie based on your choice. 
-
-Then the function render_template was used to call the information in the front.html file
-
-Finally app.run was called to run the code 
-
-layout.css file was utilized to set the background.
-
-front.html file was utilized to format the webpage within the code it is encoded to take the response from the user and respond back with the computers choice and spit back the winner or loser.
+The front.html file was utilized to format the webpage within the code it is encoded to take the response from the user and respond back with the computers choice and spit back the winner or loser.
 
 #### Issues
 
@@ -80,13 +71,9 @@ To fix this error I had to use this command
 Solution:sudo amazon-linux-extras install epel 
 
 #### Jenkins issues
-2 errors that were 
 
-Solutions were creating a new private token re adding files to repository as well as 
-
-Elastic Beanstalk kept coming up as degraded
-Solution: Changing app.py to application.py
-as well as requirement.py to requirements.py 
+- Elastic Beanstalk kept coming up as degraded
+Solution: Changing app.py to application.py as well as requirement.py to requirements.py 
 
 I chose to do this application because it was a great debate. Everyday in terms of twitter,barbershops,parks,households this conversation comes up. I am a big fan of all 3 players. Basketball is a topic that creates great debate and is very polarizing and I wanted to create something that added to that discussion. In terms of python a great way to practice if statements.
 
